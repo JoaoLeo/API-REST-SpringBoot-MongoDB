@@ -2,6 +2,7 @@ package com.curso.config;
 
 import com.curso.domain.Post;
 import com.curso.domain.User;
+import com.curso.dto.AuthorDTO;
 import com.curso.repository.PostRepository;
 import com.curso.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,9 +32,9 @@ public class Instantiation implements CommandLineRunner {
         User maria = new User(null, "Maria Brown", "maria@gmail.com");
         User alex = new User(null, "Alex Green", "alex@gmail.com");
         User bob = new User(null, "Bob Grey", "bob@gmail.com");
-        Post post1 = new Post(null, sdf.parse("21/03/2018"), "Teste title 1", "Teste body 1", maria);
-        Post post2 = new Post(null, sdf.parse("23/03/2018"), "Teste title 2", "Teste body 2", maria);
         repo.saveAll(Arrays.asList(maria,alex,bob));
+        Post post1 = new Post(null, sdf.parse("21/03/2018"), "Teste title 1", "Teste body 1", new AuthorDTO(maria));
+        Post post2 = new Post(null, sdf.parse("23/03/2018"), "Teste title 2", "Teste body 2", new AuthorDTO(maria));
         postRepo.saveAll(Arrays.asList(post1,post2));
     }
 }
