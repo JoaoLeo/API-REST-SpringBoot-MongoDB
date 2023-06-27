@@ -1,5 +1,6 @@
 package com.curso.resources;
 
+import com.curso.domain.Post;
 import com.curso.domain.User;
 import com.curso.dto.UserDTO;
 import com.curso.services.UserService;
@@ -51,5 +52,10 @@ public class UserResource {
         obj.setId(id);
         obj = service.update(obj);
         return ResponseEntity.noContent().build();
+    }
+    @GetMapping("/{id}/posts")
+    public ResponseEntity<List<Post>> getPosts(@PathVariable String id){
+       User obj = service.findById(id);
+       return ResponseEntity.ok().body(obj.getPosts());
     }
  }
