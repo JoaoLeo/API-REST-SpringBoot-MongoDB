@@ -18,6 +18,6 @@ public class PostService {
         return Post.orElseThrow(() -> new ObjectNotFoundException("Objeto não encotrado na base de dados"));
     }
     public List<Post> findByTitle(String text){
-        return repo.findByTitleContainingIgnoreCase(text);
+        return repo.findByTitle(text);
     }
 }
